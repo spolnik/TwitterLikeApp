@@ -26,10 +26,11 @@ public class ReadingCommand extends CommandBase {
         if (timeline == Timeline.Empty.INSTANCE)
             return null;
 
-        return buildOutputMessage(rawCommand, timeline);
+        return buildOutputMessage(timeline);
     }
 
-    private String buildOutputMessage(String rawCommand, Timeline timeline) {
+    //TODO: more work required to cover seconds/minutes/hours/days ...
+    private String buildOutputMessage(Timeline timeline) {
         final StringBuilder output = new StringBuilder();
 
         for (Message message : timeline.getMessages()) {
