@@ -9,8 +9,8 @@ public class FollowingCommand extends CommandBase {
     private static final Pattern regex = Pattern.compile("^(\\S+) follows (\\S+)$");
 
     @Override
-    public void run(String rawCommand, TwitterAppContext context) {
-
+    public String run(String rawCommand, TwitterAppContext context) {
+        return null;
     }
 
     @Override

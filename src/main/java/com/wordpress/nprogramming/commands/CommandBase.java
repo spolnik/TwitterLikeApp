@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 
 public abstract class CommandBase implements Command {
     @Override
-    public abstract void run(String rawCommand, TwitterAppContext context);
+    public abstract String run(String rawCommand, TwitterAppContext context);
 
     @Override
     public final boolean match(String rawCommand) {

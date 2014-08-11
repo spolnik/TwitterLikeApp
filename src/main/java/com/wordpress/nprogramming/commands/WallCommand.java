@@ -9,8 +9,8 @@ public class WallCommand extends CommandBase {
     private static final Pattern regex = Pattern.compile("^(\\S+) wall$");
 
     @Override
-    public void run(String rawCommand, TwitterAppContext context) {
-
+    public String run(String rawCommand, TwitterAppContext context) {
+        return null;
     }
 
     @Override

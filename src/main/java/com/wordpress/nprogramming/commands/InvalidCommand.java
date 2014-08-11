@@ -5,12 +5,12 @@ import com.wordpress.nprogramming.TwitterAppContext;
 public class InvalidCommand implements Command {
 
     @Override
-    public void run(String rawCommand, TwitterAppContext context) {
-
+    public String run(String rawCommand, TwitterAppContext context) {
+        return String.format("Command: %s is invalid!", rawCommand);
     }
 
     @Override
     public boolean match(String rawCommand) {
-        return true;
+        return false;
     }
 }
