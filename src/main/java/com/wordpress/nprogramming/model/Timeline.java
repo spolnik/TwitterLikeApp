@@ -11,11 +11,13 @@ public class Timeline {
     private final String owner;
     private final List<Message> messages;
 
-    public Timeline(String owner) {
-        checkState(!Strings.isNullOrEmpty(owner.trim()), "Owner cannot be null nor empty string.");
+    public Timeline(String owner, String message) {
+        checkState(!Strings.isNullOrEmpty(owner.trim()), "Owner cannot be null or empty.");
+        checkState(!Strings.isNullOrEmpty(message.trim()), "Message cannot be null or empty.");
 
         this.owner = owner;
         messages = new ArrayList<>();
+        messages.add(new Message(message));
     }
 
     public String getOwner() {
@@ -24,5 +26,17 @@ public class Timeline {
 
     public List<Message> getMessages() {
         return messages;
+    }
+
+    public void addMessage(String value) {
+        messages.add(new Message(value));
+    }
+
+    public static final class Empty extends Timeline {
+        private Empty() {
+            super("<empty>", "<empty>");
+        }
+
+        public static final Timeline INSTANCE = new Empty();
     }
 }

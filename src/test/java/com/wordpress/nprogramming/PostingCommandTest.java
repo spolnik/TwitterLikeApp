@@ -2,7 +2,6 @@ package com.wordpress.nprogramming;
 
 import com.wordpress.nprogramming.commands.Command;
 import com.wordpress.nprogramming.commands.PostingCommand;
-import com.wordpress.nprogramming.model.EmptyTimeline;
 import com.wordpress.nprogramming.model.Timeline;
 import org.junit.Before;
 import org.junit.Test;
@@ -24,7 +23,7 @@ public class PostingCommandTest {
         TwitterAppContext context = new TwitterAppContext();
 
         Timeline timeline = context.getTimelineFor(CommandSamples.user);
-        assertThat(timeline, is(EmptyTimeline.INSTANCE));
+        assertThat(timeline, is(Timeline.Empty.INSTANCE));
     }
 
     @Test
