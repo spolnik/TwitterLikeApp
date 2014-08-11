@@ -28,27 +28,27 @@ public class ActionParserTest {
 
     @Test
     public void test_that_user_typing_posting_command_creates_posting_command() throws Exception {
-        checkCommand("Mikolaj -> Hello dad!", PostingCommand.class.getSimpleName());
+        checkCommand(CommandSamples.postingCommand, PostingCommand.class.getSimpleName());
     }
 
     @Test
     public void test_that_user_typing_reading_command_creates_reading_command() throws Exception {
-        checkCommand("Mikolaj", ReadingCommand.class.getSimpleName());
+        checkCommand(CommandSamples.readingCommand, ReadingCommand.class.getSimpleName());
     }
 
     @Test
     public void test_that_user_typing_following_command_creates_following_command() throws Exception {
-        checkCommand("Mikolaj follows Julia", FollowingCommand.class.getSimpleName());
+        checkCommand(CommandSamples.followingCommand, FollowingCommand.class.getSimpleName());
     }
 
     @Test
     public void test_that_user_typing_wall_command_creates_wall_command() throws Exception {
-        checkCommand("Mikolaj wall", WallCommand.class.getSimpleName());
+        checkCommand(CommandSamples.wallCommand, WallCommand.class.getSimpleName());
     }
 
     @Test
     public void test_that_any_wrong_user_input_results_in_creating_invalid_command() throws Exception {
-        checkCommand("  ", InvalidCommand.class.getSimpleName());
+        checkCommand(CommandSamples.invalidCommand, InvalidCommand.class.getSimpleName());
     }
 
     private void checkCommand(String rawCommand, String expectedClassName) {

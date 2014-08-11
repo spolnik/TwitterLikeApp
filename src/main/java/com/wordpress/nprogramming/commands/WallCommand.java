@@ -1,5 +1,7 @@
 package com.wordpress.nprogramming.commands;
 
+import com.wordpress.nprogramming.TwitterAppContext;
+
 import java.util.regex.Pattern;
 
 public class WallCommand extends CommandBase {
@@ -7,7 +9,7 @@ public class WallCommand extends CommandBase {
     private static final Pattern regex = Pattern.compile("^(\\S+) wall$");
 
     @Override
-    public void run(String rawCommand) {
+    public void run(String rawCommand, TwitterAppContext context) {
 
     }
 
