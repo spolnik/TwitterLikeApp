@@ -13,14 +13,14 @@ public class PostingCommand extends CommandBase {
     private static final Pattern regex = Pattern.compile("^(\\S+) -> (.+)$");
 
     @Override
-    public String run(String rawCommand, TwitterAppContext context) {
-        Matcher matcher = regex.matcher(rawCommand);
+    public String run(final String rawCommand, final TwitterAppContext context) {
+        final Matcher matcher = regex.matcher(rawCommand);
         checkState(matcher.find(), "Raw command input is wrong as posting command cannot handle it");
 
-        String user = matcher.group(1);
-        String message = matcher.group(2);
+        final String user = matcher.group(1);
+        final String message = matcher.group(2);
 
-        Timeline timeline = context.getTimelineFor(user);
+        final Timeline timeline = context.getTimelineFor(user);
 
         if (timeline == Timeline.Empty.INSTANCE) {
             context.addTimeline(new Timeline(user, message));

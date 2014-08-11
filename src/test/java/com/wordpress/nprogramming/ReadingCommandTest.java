@@ -31,7 +31,7 @@ public class ReadingCommandTest {
     public void test_that_reading_from_existing_user_results_produce_valid_output() throws Exception {
         String result = command.run(CommandSamples.user, context);
         assertThat(result, is("\n" +
-                "Hello dad! (1 minute ago)"));
+                "Hello dad! (0 minutes ago)"));
     }
 
     @Test
@@ -39,7 +39,7 @@ public class ReadingCommandTest {
         new PostingCommand().run(CommandSamples.postingCommand, context);
         String result = command.run(CommandSamples.user, context);
         assertThat(result, is("\n" +
-                "Hello dad! (1 minute ago)\n" +
-                "Hello dad! (1 minute ago)"));
+                "Hello dad! (0 minutes ago)\n" +
+                "Hello dad! (0 minutes ago)"));
     }
 }
