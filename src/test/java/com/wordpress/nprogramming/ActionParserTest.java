@@ -4,16 +4,26 @@ import com.wordpress.nprogramming.commands.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 public class ActionParserTest {
 
     private SimpleCommandParser commandParser;
+    private List<Command> commands;
 
     @Before
     public void setUp() throws Exception {
         commandParser = new SimpleCommandParser();
+
+        commands = new ArrayList<>();
+        commands.add(new PostingCommand());
+        commands.add(new ReadingCommand());
+        commands.add(new FollowingCommand());
+        commands.add(new WallCommand());
     }
 
     @Test
@@ -42,7 +52,7 @@ public class ActionParserTest {
     }
 
     private void checkCommand(String rawCommand, String expectedClassName) {
-        Command postingCommand = commandParser.parse(rawCommand);
+        Command postingCommand = commandParser.parse(rawCommand, commands);
         assertThat(postingCommand.getClass().getSimpleName(), is(expectedClassName));
     }
 }

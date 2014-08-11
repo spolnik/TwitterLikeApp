@@ -1,5 +1,6 @@
 package com.wordpress.nprogramming.commands;
 
 public interface Command {
-    void run();
+    void run(String rawCommand);
+    boolean match(String rawCommand);
 }

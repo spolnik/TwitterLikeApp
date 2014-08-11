@@ -1,8 +1,18 @@
 package com.wordpress.nprogramming.commands;
 
-public class PostingCommand implements Command {
-    @Override
-    public void run() {
+import java.util.regex.Pattern;
 
+public class PostingCommand extends CommandBase {
+
+    private static final Pattern regex = Pattern.compile("^(\\S+) -> (.+)$");
+
+    @Override
+    public void run(String rawCommand) {
+
+    }
+
+    @Override
+    protected Pattern getCommandRegex() {
+        return regex;
     }
 }
