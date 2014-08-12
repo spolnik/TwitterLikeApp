@@ -7,10 +7,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class TwitterAppContext {
+public class TwitterAppContext implements AppContext {
 
     private final Map<String, Timeline> timelines = new HashMap<>();
 
+    @Override
     public Timeline getTimelineFor(String user) {
         if (timelines.containsKey(user)) {
             return timelines.get(user);
@@ -19,10 +20,12 @@ public class TwitterAppContext {
         return Timeline.Empty.INSTANCE;
     }
 
+    @Override
     public void addTimeline(Timeline timeline) {
         timelines.put(timeline.getOwner(), timeline);
     }
 
+    @Override
     public List<Timeline> getAllTimelines(String user) {
         List<Timeline> allTimelines = new ArrayList<>();
 

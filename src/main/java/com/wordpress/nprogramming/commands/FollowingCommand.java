@@ -1,6 +1,6 @@
 package com.wordpress.nprogramming.commands;
 
-import com.wordpress.nprogramming.TwitterAppContext;
+import com.wordpress.nprogramming.AppContext;
 import com.wordpress.nprogramming.model.Timeline;
 
 import java.util.regex.Matcher;
@@ -13,7 +13,7 @@ public class FollowingCommand extends CommandBase {
     private static final Pattern REGEX = Pattern.compile("^(\\S+) follows (\\S+)$");
 
     @Override
-    public String run(String rawCommand, TwitterAppContext context) {
+    public String run(String rawCommand, AppContext context) {
         final Matcher matcher = REGEX.matcher(rawCommand);
         checkState(matcher.find(), "Raw command input is wrong as posting command cannot handle it");
 

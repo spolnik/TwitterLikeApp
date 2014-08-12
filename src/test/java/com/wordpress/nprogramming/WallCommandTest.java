@@ -11,7 +11,7 @@ import static org.junit.Assert.assertThat;
 
 public class WallCommandTest {
     private WallCommand command;
-    private TwitterAppContext context;
+    private AppContext context;
 
     @Before
     public void setUp() throws Exception {

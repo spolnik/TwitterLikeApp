@@ -1,6 +1,6 @@
 package com.wordpress.nprogramming.commands;
 
-import com.wordpress.nprogramming.TwitterAppContext;
+import com.wordpress.nprogramming.AppContext;
 import com.wordpress.nprogramming.model.Message;
 import com.wordpress.nprogramming.model.Timeline;
 import org.joda.time.DateTime;
@@ -12,12 +12,12 @@ import java.util.regex.Pattern;
 
 import static com.google.common.base.Preconditions.checkState;
 
-public class WallCommand extends CommandBase {
+public class WallCommand extends OutputCommandBase {
 
     private static final Pattern REGEX = Pattern.compile("^(\\S+) wall$");
 
     @Override
-    public String run(String rawCommand, TwitterAppContext context) {
+    public String run(String rawCommand, AppContext context) {
         final Matcher matcher = REGEX.matcher(rawCommand);
         checkState(matcher.find(), "Raw command input is wrong as posting command cannot handle it");
 
@@ -31,12 +31,12 @@ public class WallCommand extends CommandBase {
             allMessages.addAll(timeline.getMessages());
         }
 
-        Collections.sort(allMessages, (message1, message2) -> message1.getCreatedOn().compareTo(message2.getCreatedOn()));
+        sortMessages(allMessages);
 
         StringBuilder output = new StringBuilder();
 
         for (Message message : allMessages) {
-            final int minutes = Minutes.minutesBetween(DateTime.now(), message.getCreatedOn()).getMinutes();
+            final int minutes = Minutes.minutesBetween(message.getCreatedOn(), DateTime.now()).getMinutes();
             final String minutesPart = minutes == 1 ? "minute" : "minutes";
 
             output.append(String.format("\n%s - %s (%d %s ago)", message.getOwner(), message.getValue(), minutes, minutesPart));

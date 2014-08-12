@@ -1,11 +1,11 @@
 package com.wordpress.nprogramming.commands;
 
-import com.wordpress.nprogramming.TwitterAppContext;
+import com.wordpress.nprogramming.AppContext;
 
 public class InvalidCommand implements Command {
 
     @Override
-    public String run(String rawCommand, TwitterAppContext context) {
+    public String run(String rawCommand, AppContext context) {
         return String.format("Command: %s is invalid!", rawCommand);
     }
 

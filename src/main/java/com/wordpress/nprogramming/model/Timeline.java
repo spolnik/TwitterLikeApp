@@ -3,6 +3,7 @@ package com.wordpress.nprogramming.model;
 import com.google.common.base.Strings;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static com.google.common.base.Preconditions.checkState;
@@ -29,7 +30,7 @@ public class Timeline {
     }
 
     public List<Message> getMessages() {
-        return messages;
+        return Collections.unmodifiableList(messages);
     }
 
     public void addMessage(String value) {
@@ -37,7 +38,7 @@ public class Timeline {
     }
 
     public List<String> getFollowers() {
-        return followers;
+        return Collections.unmodifiableList(followers);
     }
 
     public void addFollower(String user) {
