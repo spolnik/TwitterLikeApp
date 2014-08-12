@@ -19,7 +19,7 @@ public class Timeline {
         this.owner = owner;
 
         messages = new ArrayList<>();
-        messages.add(new Message(message));
+        messages.add(new Message(message, owner));
 
         followers = new ArrayList<>();
     }
@@ -33,7 +33,7 @@ public class Timeline {
     }
 
     public void addMessage(String value) {
-        messages.add(new Message(value));
+        messages.add(new Message(value, owner));
     }
 
     public List<String> getFollowers() {

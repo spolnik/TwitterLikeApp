@@ -4,10 +4,12 @@ import org.joda.time.DateTime;
 
 public class Message {
     private final String value;
-    private DateTime createdOn;
+    private final String owner;
+    private final DateTime createdOn;
 
-    public Message(String value) {
+    public Message(String value, String owner) {
         this.value = value;
+        this.owner = owner;
         createdOn = DateTime.now();
     }
 
@@ -17,5 +19,9 @@ public class Message {
 
     public DateTime getCreatedOn() {
         return createdOn;
+    }
+
+    public String getOwner() {
+        return owner;
     }
 }
