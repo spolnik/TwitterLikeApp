@@ -34,8 +34,8 @@ public class ReadingCommand extends OutputCommandBase {
         List<Message> sortedMessages = new ArrayList<>(timeline.getMessages());
         sortMessages(sortedMessages);
 
-        for (Message message : sortedMessages) {
-            String timePart = createTimePart(message);
+        for (final Message message : sortedMessages) {
+            final String timePart = createTimePart(message);
             output.append(String.format("\n%s %s", message.getValue(), timePart));
         }
 

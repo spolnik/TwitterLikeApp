@@ -27,10 +27,10 @@ public class TwitterAppContext implements AppContext {
 
     @Override
     public List<Timeline> getAllTimelines(String user) {
-        List<Timeline> allTimelines = new ArrayList<>();
+        final List<Timeline> allTimelines = new ArrayList<>();
 
-        for (String key : timelines.keySet()) {
-            Timeline timeline = timelines.get(key);
+        for (final String key : timelines.keySet()) {
+            final Timeline timeline = timelines.get(key);
             if (key.equals(user)) {
                 allTimelines.add(timeline);
             } else if (timeline.getFollowers().contains(user)) {

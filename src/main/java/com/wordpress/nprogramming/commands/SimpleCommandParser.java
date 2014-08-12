@@ -6,7 +6,7 @@ public class SimpleCommandParser implements CommandParser {
 
     @Override
     public Command parse(String rawCommand, List<Command> commands) {
-        for (Command command : commands) {
+        for (final Command command : commands) {
             if (command.match(rawCommand))
                 return command;
         }

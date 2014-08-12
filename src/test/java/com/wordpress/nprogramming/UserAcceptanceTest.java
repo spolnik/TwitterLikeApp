@@ -7,6 +7,7 @@ import com.google.inject.TypeLiteral;
 import com.wordpress.nprogramming.commands.Command;
 import com.wordpress.nprogramming.commands.CommandParser;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.List;
@@ -28,6 +29,7 @@ public class UserAcceptanceTest {
         commands = injector.getInstance(Key.get(new TypeLiteral<List<Command>>() {}));
     }
 
+    @Ignore("Long running user acceptance test")
     @Test
     public void user_acceptance_test() throws Exception {
 

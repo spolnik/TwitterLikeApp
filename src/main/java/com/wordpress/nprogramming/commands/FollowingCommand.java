@@ -17,10 +17,10 @@ public class FollowingCommand extends CommandBase {
         final Matcher matcher = REGEX.matcher(rawCommand);
         checkState(matcher.find(), "Raw command input is wrong as posting command cannot handle it");
 
-        String user = matcher.group(1);
-        String userToFollow = matcher.group(2);
+        final String user = matcher.group(1);
+        final String userToFollow = matcher.group(2);
 
-        Timeline timeline = context.getTimelineFor(userToFollow);
+        final Timeline timeline = context.getTimelineFor(userToFollow);
 
         if (timeline != Timeline.Empty.INSTANCE) {
             timeline.addFollower(user);

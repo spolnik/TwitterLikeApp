@@ -20,22 +20,20 @@ public class WallCommand extends OutputCommandBase {
         final Matcher matcher = REGEX.matcher(rawCommand);
         checkState(matcher.find(), "Raw command input is wrong as posting command cannot handle it");
 
-        String user = matcher.group(1);
+        final String user = matcher.group(1);
+        final List<Timeline> timelines = context.getAllTimelines(user);
+        final List<Message> allMessages = new ArrayList<>();
 
-        List<Timeline> timelines = context.getAllTimelines(user);
-
-        List<Message> allMessages = new ArrayList<>();
-
-        for (Timeline timeline : timelines) {
+        for (final Timeline timeline : timelines) {
             allMessages.addAll(timeline.getMessages());
         }
 
         sortMessages(allMessages);
 
-        StringBuilder output = new StringBuilder();
+        final StringBuilder output = new StringBuilder();
 
-        for (Message message : allMessages) {
-            String timePart = createTimePart(message);
+        for (final Message message : allMessages) {
+            final String timePart = createTimePart(message);
             output.append(String.format("\n%s - %s %s", message.getOwner(), message.getValue(), timePart));
         }
 

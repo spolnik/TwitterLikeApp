@@ -11,7 +11,7 @@ public abstract class CommandBase implements Command {
 
     @Override
     public final boolean match(String rawCommand) {
-        Matcher matcher = getCommandRegex().matcher(rawCommand);
+        final Matcher matcher = getCommandRegex().matcher(rawCommand);
         return matcher.find();
     }
 
