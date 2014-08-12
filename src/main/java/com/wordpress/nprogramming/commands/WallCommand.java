@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 
 public class WallCommand extends CommandBase {
 
-    private static final Pattern regex = Pattern.compile("^(\\S+) wall$");
+    private static final Pattern REGEX = Pattern.compile("^(\\S+) wall$");
 
     @Override
     public String run(String rawCommand, TwitterAppContext context) {
@@ -15,6 +15,6 @@ public class WallCommand extends CommandBase {
 
     @Override
     protected Pattern getCommandRegex() {
-        return regex;
+        return REGEX;
     }
 }

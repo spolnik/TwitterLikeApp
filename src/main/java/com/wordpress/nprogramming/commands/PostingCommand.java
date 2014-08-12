@@ -10,11 +10,11 @@ import static com.google.common.base.Preconditions.checkState;
 
 public class PostingCommand extends CommandBase {
 
-    private static final Pattern regex = Pattern.compile("^(\\S+) -> (.+)$");
+    private static final Pattern REGEX = Pattern.compile("^(\\S+) -> (.+)$");
 
     @Override
     public String run(final String rawCommand, final TwitterAppContext context) {
-        final Matcher matcher = regex.matcher(rawCommand);
+        final Matcher matcher = REGEX.matcher(rawCommand);
         checkState(matcher.find(), "Raw command input is wrong as posting command cannot handle it");
 
         final String user = matcher.group(1);
@@ -33,6 +33,6 @@ public class PostingCommand extends CommandBase {
 
     @Override
     protected Pattern getCommandRegex() {
-        return regex;
+        return REGEX;
     }
 }

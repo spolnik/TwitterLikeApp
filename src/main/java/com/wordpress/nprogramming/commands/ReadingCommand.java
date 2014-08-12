@@ -1,6 +1,5 @@
 package com.wordpress.nprogramming.commands;
 
-import com.google.common.base.Preconditions;
 import com.wordpress.nprogramming.TwitterAppContext;
 import com.wordpress.nprogramming.model.Message;
 import com.wordpress.nprogramming.model.Timeline;
@@ -10,16 +9,16 @@ import org.joda.time.Minutes;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static com.google.inject.internal.util.$Preconditions.checkState;
+import static com.google.common.base.Preconditions.checkState;
 
 public class ReadingCommand extends CommandBase {
 
-    private static final Pattern regex = Pattern.compile("^\\S+$");
+    private static final Pattern REGEX = Pattern.compile("^\\S+$");
 
     @Override
     public String run(final String rawCommand, final TwitterAppContext context) {
-        final Matcher matcher = regex.matcher(rawCommand);
-        Preconditions.checkState(matcher.find(), "Raw command input is wrong as posting command cannot handle it");
+        final Matcher matcher = REGEX.matcher(rawCommand);
+        checkState(matcher.find(), "Raw command input is wrong as posting command cannot handle it");
 
         final Timeline timeline = context.getTimelineFor(rawCommand);
 
@@ -45,6 +44,6 @@ public class ReadingCommand extends CommandBase {
 
     @Override
     protected Pattern getCommandRegex() {
-        return regex;
+        return REGEX;
     }
 }

@@ -40,6 +40,10 @@ public class Timeline {
         return followers;
     }
 
+    public void addFollower(String user) {
+        followers.add(user);
+    }
+
     public static final class Empty extends Timeline {
         private Empty() {
             super("<empty>", "<empty>");
