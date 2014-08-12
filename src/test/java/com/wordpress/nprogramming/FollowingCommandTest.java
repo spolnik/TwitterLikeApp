@@ -19,12 +19,12 @@ public class FollowingCommandTest {
     public void setUp() throws Exception {
         command = new FollowingCommand();
         context = new TwitterAppContext();
-        new PostingCommand().run(CommandSamples.POSTING_COMMAND, context);
+        new PostingCommand().run(CommandSamples.POSTING_COMMAND_FOR_MIKOLAJ, context);
     }
 
     @Test
     public void test_that_subscribing_to_existing_user_adds_follower_to_that_timeline() throws Exception {
-        command.run(CommandSamples.FOLLOWING_COMMAND, context);
+        command.run(CommandSamples.FOLLOWING_COMMAND_JULIA_FOLLOWS_MIKOLAJ, context);
         Timeline timeline = context.getTimelineFor(CommandSamples.MIKOLAJ);
         List<String> followers = timeline.getFollowers();
 

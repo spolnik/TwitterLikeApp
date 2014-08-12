@@ -29,7 +29,7 @@ public class PostingCommandTest {
     @Test
     public void test_posting_first_time_command_results_in_creating_user_timeline() throws Exception {
         TwitterAppContext context = new TwitterAppContext();
-        command.run(CommandSamples.POSTING_COMMAND, context);
+        command.run(CommandSamples.POSTING_COMMAND_FOR_MIKOLAJ, context);
 
         Timeline timeline = context.getTimelineFor(CommandSamples.MIKOLAJ);
         assertThat(timeline.getOwner(), is(CommandSamples.MIKOLAJ));
@@ -39,8 +39,8 @@ public class PostingCommandTest {
     @Test
     public void test_posting_two_commands_which_should_result_in_creating_user_timeline_with_two_messages() throws Exception {
         TwitterAppContext context = new TwitterAppContext();
-        command.run(CommandSamples.POSTING_COMMAND, context);
-        command.run(CommandSamples.POSTING_COMMAND, context);
+        command.run(CommandSamples.POSTING_COMMAND_FOR_MIKOLAJ, context);
+        command.run(CommandSamples.POSTING_COMMAND_FOR_MIKOLAJ, context);
 
         Timeline timeline = context.getTimelineFor(CommandSamples.MIKOLAJ);
         assertThat(timeline.getOwner(), is(CommandSamples.MIKOLAJ));
@@ -50,8 +50,8 @@ public class PostingCommandTest {
     @Test
     public void test_posting_two_commands_with_different_users_which_should_result_in_creating_two_user_timelines() throws Exception {
         TwitterAppContext context = new TwitterAppContext();
-        command.run(CommandSamples.POSTING_COMMAND, context);
-        command.run(CommandSamples.POSTING_COMMAND_2, context);
+        command.run(CommandSamples.POSTING_COMMAND_FOR_MIKOLAJ, context);
+        command.run(CommandSamples.POSTING_COMMAND_FOR_JULIA, context);
 
         Timeline timeline = context.getTimelineFor(CommandSamples.MIKOLAJ);
         assertThat(timeline.getOwner(), is(CommandSamples.MIKOLAJ));

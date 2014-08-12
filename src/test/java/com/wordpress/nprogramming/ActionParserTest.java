@@ -28,22 +28,22 @@ public class ActionParserTest {
 
     @Test
     public void test_that_user_typing_posting_command_creates_posting_command() throws Exception {
-        checkCommand(CommandSamples.POSTING_COMMAND, PostingCommand.class.getSimpleName());
+        checkCommand(CommandSamples.POSTING_COMMAND_FOR_MIKOLAJ, PostingCommand.class.getSimpleName());
     }
 
     @Test
     public void test_that_user_typing_reading_command_creates_reading_command() throws Exception {
-        checkCommand(CommandSamples.READING_COMMAND, ReadingCommand.class.getSimpleName());
+        checkCommand(CommandSamples.READING_COMMAND_FOR_MIKOLAJ, ReadingCommand.class.getSimpleName());
     }
 
     @Test
     public void test_that_user_typing_following_command_creates_following_command() throws Exception {
-        checkCommand(CommandSamples.FOLLOWING_COMMAND, FollowingCommand.class.getSimpleName());
+        checkCommand(CommandSamples.FOLLOWING_COMMAND_JULIA_FOLLOWS_MIKOLAJ, FollowingCommand.class.getSimpleName());
     }
 
     @Test
     public void test_that_user_typing_wall_command_creates_wall_command() throws Exception {
-        checkCommand(CommandSamples.WALL_COMMAND, WallCommand.class.getSimpleName());
+        checkCommand(CommandSamples.WALL_COMMAND_FOR_JULIA, WallCommand.class.getSimpleName());
     }
 
     @Test
