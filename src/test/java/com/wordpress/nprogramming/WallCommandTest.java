@@ -26,7 +26,7 @@ public class WallCommandTest {
     public void test_displaying_wall_of_user_with_one_subscription_should_result_in_all_messages_displayed() throws Exception {
         String result = command.run(CommandSamples.WALL_COMMAND_FOR_JULIA, context);
         assertThat(result, is("\n" +
-                "Julia - Good morning dad! (0 minutes ago)\n" +
-                "Mikolaj - Hello dad! (0 minutes ago)"));
+                "Julia - Good morning dad! (0 seconds ago)\n" +
+                "Mikolaj - Hello dad! (0 seconds ago)\n"));
     }
 }

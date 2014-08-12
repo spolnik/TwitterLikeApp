@@ -3,10 +3,9 @@ package com.wordpress.nprogramming.commands;
 import com.wordpress.nprogramming.AppContext;
 import com.wordpress.nprogramming.model.Message;
 import com.wordpress.nprogramming.model.Timeline;
-import org.joda.time.DateTime;
-import org.joda.time.Minutes;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -36,12 +35,11 @@ public class WallCommand extends OutputCommandBase {
         StringBuilder output = new StringBuilder();
 
         for (Message message : allMessages) {
-            final int minutes = Minutes.minutesBetween(message.getCreatedOn(), DateTime.now()).getMinutes();
-            final String minutesPart = minutes == 1 ? "minute" : "minutes";
-
-            output.append(String.format("\n%s - %s (%d %s ago)", message.getOwner(), message.getValue(), minutes, minutesPart));
+            String timePart = createTimePart(message);
+            output.append(String.format("\n%s - %s %s", message.getOwner(), message.getValue(), timePart));
         }
 
+        output.append("\n");
         return output.toString();
     }
 

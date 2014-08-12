@@ -3,11 +3,8 @@ package com.wordpress.nprogramming.commands;
 import com.wordpress.nprogramming.AppContext;
 import com.wordpress.nprogramming.model.Message;
 import com.wordpress.nprogramming.model.Timeline;
-import org.joda.time.DateTime;
-import org.joda.time.Minutes;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -31,7 +28,6 @@ public class ReadingCommand extends OutputCommandBase {
         return buildOutputMessage(timeline);
     }
 
-    //TODO: more work required to cover seconds/minutes/hours/days ...
     private String buildOutputMessage(Timeline timeline) {
         final StringBuilder output = new StringBuilder();
 
@@ -39,12 +35,11 @@ public class ReadingCommand extends OutputCommandBase {
         sortMessages(sortedMessages);
 
         for (Message message : sortedMessages) {
-            final int minutes = Minutes.minutesBetween(message.getCreatedOn(), DateTime.now()).getMinutes();
-            final String minutesPart = minutes == 1 ? "minute" : "minutes";
-
-            output.append(String.format("\n%s (%d %s ago)", message.getValue(), minutes, minutesPart));
+            String timePart = createTimePart(message);
+            output.append(String.format("\n%s %s", message.getValue(), timePart));
         }
 
+        output.append("\n");
         return output.toString();
     }
 

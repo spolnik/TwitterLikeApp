@@ -43,12 +43,12 @@ public class UserAcceptanceTest {
         // Reading: Bob can view Alice’s timeline
         String result = processCommand("Alice");
         assertThat(result, is("\n" +
-                "I love the weather today (1 minute ago)"));
+                "I love the weather today (1 minute ago)\n"));
 
         result = processCommand("Bob");
         assertThat(result, is("\n" +
                 "Oh, we lost! (10 seconds ago)\n" +
-                "at least it's sunny (20 seconds ago)"));
+                "at least it's sunny (20 seconds ago)\n"));
 
         // Following: Charlie can subscribe to Alice’s and Bob’s timelines, and view them on his wall, an aggregated list of all subscriptions
 
@@ -64,10 +64,10 @@ public class UserAcceptanceTest {
         processCommand("Charlie follows Bob");
         result = processCommand("Charlie wall");
         assertThat(result, is("\n" +
-                "Charlie - I'm in New York today! Anyone wants to have a coffee? (15 seconds ago)\n" +
-                "Bob - Oh, we lost! (1 minute ago)\n" +
-                "Bob - at least it's sunny (2 minutes ago)\n" +
-                "Alice - I love the weather today (5 minutes ago)\n"));
+                "Charlie - I'm in New York today! Anyone wants to have a coffee? (2 seconds ago)\n" +
+                "Bob - Oh, we lost! (12 seconds ago)\n" +
+                "Bob - at least it's sunny (22 seconds ago)\n" +
+                "Alice - I love the weather today (1 minute ago)\n"));
     }
 
     private String processCommand(String rawCommand) {
