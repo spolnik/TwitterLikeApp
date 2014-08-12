@@ -10,14 +10,18 @@ import static com.google.common.base.Preconditions.checkState;
 public class Timeline {
     private final String owner;
     private final List<Message> messages;
+    private List<String> followers;
 
     public Timeline(String owner, String message) {
         checkState(!Strings.isNullOrEmpty(owner.trim()), "Owner cannot be null or empty.");
         checkState(!Strings.isNullOrEmpty(message.trim()), "Message cannot be null or empty.");
 
         this.owner = owner;
+
         messages = new ArrayList<>();
         messages.add(new Message(message));
+
+        followers = new ArrayList<>();
     }
 
     public String getOwner() {
@@ -30,6 +34,10 @@ public class Timeline {
 
     public void addMessage(String value) {
         messages.add(new Message(value));
+    }
+
+    public List<String> getFollowers() {
+        return followers;
     }
 
     public static final class Empty extends Timeline {
