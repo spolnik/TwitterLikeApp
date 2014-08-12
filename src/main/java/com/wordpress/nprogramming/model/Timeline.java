@@ -11,7 +11,7 @@ import static com.google.common.base.Preconditions.checkState;
 public class Timeline {
     private final String owner;
     private final List<Message> messages;
-    private List<String> followers;
+    private final List<String> followers;
 
     public Timeline(String owner, String message) {
         checkState(!Strings.isNullOrEmpty(owner.trim()), "Owner cannot be null or empty.");

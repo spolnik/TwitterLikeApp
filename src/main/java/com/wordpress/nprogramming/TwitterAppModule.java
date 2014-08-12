@@ -8,7 +8,7 @@ import com.wordpress.nprogramming.commands.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TwitterAppModule extends AbstractModule {
+class TwitterAppModule extends AbstractModule {
     @Override
     protected void configure() {
         bind(CommandParser.class).to(SimpleCommandParser.class).asEagerSingleton();
